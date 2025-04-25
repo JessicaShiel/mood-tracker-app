@@ -91,11 +91,6 @@ export class HistoryPage implements OnInit {
     } else {
       backgroundColors = this.moods.map(() => '#3880ff');
     }
-
-      // Destroy previous chart instance (if any)
-  if (this.chart?.chart) {
-    this.chart.chart.destroy();
-  }
   
     this.chartData = {
       labels: this.chartLabels,
@@ -145,7 +140,7 @@ export class HistoryPage implements OnInit {
     return `${emoji} Mood: ${mood}` + (note ? ` - ${note}` : '');
   }
 
-  chartOptions: ChartOptions = {
+  chartOptions: ChartOptions<'bar' | 'line'> = {
     responsive: true,
     animation: {
       duration: 500,
@@ -155,15 +150,41 @@ export class HistoryPage implements OnInit {
       tooltip: {
         callbacks: {
           label: (context) => {
-            const mood = this.moods[context.dataIndex];
+            const index = context.dataIndex;
+            const mood = this.moods[index];
             if (!mood) return 'No data';
             const emoji = mood.mood >= 4 ? '😊' : mood.mood === 3 ? '😐' : '😢';
             return `${emoji} Mood: ${mood.mood} - ${mood.note || 'No note'}`;
           }
         }
+      },
+      legend: {
+        display: true
+      }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Date'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Mood Level'
+        },
+        min: 0,
+        max: 5,
+        ticks: {
+          stepSize: 1
+        }
       }
     }
   };
+  
+  
+  
   
   
 }
