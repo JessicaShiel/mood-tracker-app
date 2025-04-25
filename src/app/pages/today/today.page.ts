@@ -32,6 +32,13 @@ export class TodayPage implements OnInit {
 
     await this.storageService.saveMood(dateKey, moodData);
 
+
+    ///testing over here
+    console.log('Saved mood:', dateKey, moodData);
+
+const allMoods = await this.storageService.getAllMoods();
+console.log('All moods after save:', allMoods);
+
     const alert = await this.alertCtrl.create({
       header: 'Mood Saved',
       message: 'Your mood has been successfully saved!',
