@@ -1,7 +1,8 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
-import { provideStorage } from '@ionic/storage-angular';
+import { importProvidersFrom } from '@angular/core';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
@@ -9,7 +10,13 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideIonicAngular(), provideStorage(),
+    provideIonicAngular(),
+    importProvidersFrom(IonicStorageModule.forRoot()), // ✅ THIS IS THE CORRECT WAY
     provideRouter(routes, withPreloading(PreloadAllModules)),
   ],
 });
+
+
+
+
+

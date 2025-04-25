@@ -18,8 +18,7 @@ export class TodayPage implements OnInit {
   note: string = '';
   currentDate: string = new Date().toLocaleString(); // shows current date/time
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   constructor(private storageService: StorageService) {}
   saveMood() {
@@ -33,3 +32,4 @@ export class TodayPage implements OnInit {
       console.log('Mood saved!');
     });
   }
+}
