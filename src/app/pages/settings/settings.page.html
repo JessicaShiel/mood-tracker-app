@@ -8,6 +8,9 @@
       <ion-item>
         <ion-label>Dark Mode</ion-label>
         <ion-toggle [checked]="isDarkMode" (ionChange)="toggleDarkMode($event)"></ion-toggle>
+        <ion-button expand="block" (click)="vibrate()">Vibrate Device</ion-button>
+        <p><strong>App Version:</strong> {{ appVersion }}</p>
+
       </ion-item>
     </ion-card-content>
   </ion-card>

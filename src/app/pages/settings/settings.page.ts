@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList } from '@ionic/angular/standalone';
-import { Device } from '@capacitor/device';
+import { Device, Haptics, ImpactStyle, App } from '@capacitor/device';
 
 @Component({
   selector: 'app-settings',
@@ -21,7 +21,10 @@ import { Device } from '@capacitor/device';
     IonList
   ]
 })
+
 export class SettingsPage implements OnInit {
+
+  appVersion = '';
 
   deviceInfo: any = {};
   isDarkMode = false;
@@ -31,6 +34,8 @@ export class SettingsPage implements OnInit {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     this.isDarkMode = prefersDark;
     this.setTheme(this.isDarkMode);
+    const info = await App.getInfo();
+    this.appVersion = info.version;
   }
 
   toggleDarkMode(event: any) {
@@ -38,7 +43,14 @@ export class SettingsPage implements OnInit {
   }
 
   private setTheme(enableDark: boolean) {
-    document.body.classList.toggle('dark', enableDark);
+    if (enableDark) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }
+  vibrate() {
+    Haptics.impact({ style: ImpactStyle.Heavy });
   }
 }
 
