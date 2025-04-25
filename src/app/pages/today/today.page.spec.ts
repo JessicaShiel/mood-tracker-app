@@ -13,5 +13,6 @@ describe('TodayPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  })
+
 });

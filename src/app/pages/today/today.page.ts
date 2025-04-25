@@ -10,9 +10,12 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
+
 export class TodayPage implements OnInit {
 
-  constructor() { }
+  moodValue: number = 3; // Default mood level (1-5)
+  note: string = '';
+  currentDate: string = new Date().toLocaleString(); // shows current date/time
 
   ngOnInit() {
   }
