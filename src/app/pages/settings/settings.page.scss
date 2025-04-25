@@ -1,37 +1,46 @@
 ion-content {
-    --background: #fff0f5; // light pink background
+    --background: #fff0f5; 
     padding: 16px;
   }
   
   ion-card {
-    background-color: #fbeaff; // soft purple
+    background-color: #fbeaff; 
     border-radius: 16px;
     box-shadow: 0 4px 8px rgba(234, 179, 255, 0.4); // soft purple shadow
-    color: #4a0072; // deep purple text
+    color: #4a0072; 
   }
   
   ion-card-title {
-    color: #b266ff; // lilac/purple
+    color: #b266ff; 
     font-size: 1.2rem;
     font-weight: bold;
   }
   
   ion-label {
-    color: #800080; // purple
+    color: #800080; 
   }
   
   ion-toggle {
-    --handle-background: #ffccff; // pastel pink
+    --handle-background: #ffccff; 
     --handle-border-color: #ffc0cb;
-    --background-checked: #dda0dd; // plum when active
+    --background-checked: #dda0dd; 
   }
   
   ion-button {
-    --background: #ffb6c1; // light pink
+    --background: #ffb6c1; 
     --background-activated: #ffa6c9;
     --color: #fff;
     border-radius: 20px;
     font-weight: bold;
     letter-spacing: 0.5px;
   }
+
+  ion-item {
+    background-color: #ffb6c1; /* or whatever lighter color you want */
+  }
+
+  .dark-mode-toggle {
+    background-color: #800080;
+  }
+
   
