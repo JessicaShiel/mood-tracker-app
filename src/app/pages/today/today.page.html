@@ -1,13 +1,16 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Today</ion-title>
+  <ion-toolbar color="light">
+    <ion-title class="header-title">Today</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h2>{{ currentDate }}</h2>
+<ion-content class="ion-padding custom-background">
 
-  <ion-item>
+  <div class="date-box">
+    <h2>{{ currentDate }}</h2>
+  </div>
+
+  <ion-item class="custom-item">
     <ion-label position="stacked">How are you feeling today?</ion-label>
     <ion-range
       min="1"
@@ -22,7 +25,7 @@
     </ion-range>
   </ion-item>
 
-  <div class="emoji-display" style="font-size: 2rem; text-align: center; margin-top: 10px;">
+  <div class="emoji-display">
     <span *ngIf="moodValue === 1">😞</span>
     <span *ngIf="moodValue === 2">😐</span>
     <span *ngIf="moodValue === 3">🙂</span>
@@ -30,7 +33,7 @@
     <span *ngIf="moodValue === 5">😁</span>
   </div>
 
-  <ion-item>
+  <ion-item class="custom-item">
     <ion-label position="stacked">Add a note (optional)</ion-label>
     <ion-textarea
       placeholder="Write something..."
@@ -39,7 +42,7 @@
     ></ion-textarea>
   </ion-item>
 
-  <ion-button expand="block" color="success" (click)="saveMood()">
+  <ion-button expand="block" class="custom-button" (click)="saveMood()">
     Save Mood
   </ion-button>
 </ion-content>
