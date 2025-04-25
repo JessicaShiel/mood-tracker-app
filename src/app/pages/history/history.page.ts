@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { BaseChartDirective } from 'ng2-charts';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButton, IonLabel, IonItem, IonIcon, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton  } from '@ionic/angular/standalone';
+import { IonContent, IonSegment, IonSegmentButton, IonLabel, IonItem, IonIcon, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton  } from '@ionic/angular/standalone';
 import { ChartType, ChartOptions, ChartConfiguration  } from 'chart.js';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -22,9 +22,6 @@ Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, L
     FormsModule,
     NgChartsModule,
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     IonSegment,
     IonSegmentButton,
     IonLabel,

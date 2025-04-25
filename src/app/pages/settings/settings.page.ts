@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList } from '@ionic/angular/standalone';
+import {IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, } from '@ionic/angular/standalone';
 import { Device} from '@capacitor/device';
 import { Haptics, ImpactStyle, } from '@capacitor/haptics';
 import { App } from '@capacitor/app';
@@ -22,7 +22,6 @@ import { IonButton } from '@ionic/angular/standalone';
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonList,
     IonButton
   ]
 })
