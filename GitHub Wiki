@@ -1,0 +1,28 @@
+
+## User Guide (for GitHub Wiki)
+
+# Daily Mood Tracker - User Guide
+
+## Navigation
+Today Page:
+   Use the slider to select your mood (1-5 scale).
+   Optionally type a note about your day.
+  -Press Save to store your mood.
+
+-History Page:
+   View past moods in a bar or line chart.
+   Hover or click on a mood to see the note.
+   Filter moods by week or month.
+
+Settings Page:
+   Toggle dark mode.
+   View your device info (model, OS, etc).
+
+Features
+ Mood and note data is saved locally using Ionic Storage.
+ Device info is retrieved using @capacitor/device plugin.
+ Charts are displayed using Chart.js.
+
+ How to Run
+1. Clone the GitHub repository.
+
