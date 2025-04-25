@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButton, IonLabel } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButton, IonLabel, IonItem, IonIcon, IonToggle } from '@ionic/angular/standalone';
 import { ChartType, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { StorageService } from 'src/app/services/storage.service';
@@ -11,7 +11,7 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSegment, IonSegmentButton, IonLabel, BaseChartDirective ]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSegment, IonSegmentButton, IonLabel, BaseChartDirective, IonItem, IonIcon, IonToggle ]
 })
 export class HistoryPage implements OnInit {
 
@@ -88,5 +88,16 @@ export class HistoryPage implements OnInit {
     const note = this.moods[index]?.note;
     return `${emoji} Mood: ${mood}` + (note ? ` - ${note}` : '');
   }
+
+  chartOptions: ChartOptions = {
+    responsive: true,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context: any) => this.getTooltip(context.dataIndex)
+        }
+      }
+    }
+  };
   
 }
