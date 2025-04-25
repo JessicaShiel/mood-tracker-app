@@ -36,11 +36,14 @@ ion-content {
   }
 
   ion-item {
-    background-color: #ffb6c1; /* or whatever lighter color you want */
+    --background: #ffb6c1; /* or whatever lighter color you want */
   }
 
-  .dark-mode-toggle {
-    background-color: #800080;
+  ion-toggle {
+    --handle-background: #800080; /* Color of the toggle circle */
+    --handle-background-checked: #ffb6c1; /* When switched ON */
+    --background: #800080; /* Soft background when OFF (Khaki color) */
+    --background-checked: #ffb6c1; /* Background when ON */
   }
 
   
