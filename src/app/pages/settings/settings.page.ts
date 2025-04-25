@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList } from '@ionic/angular/standalone';
+import {IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList } from '@ionic/angular/standalone';
 import { Device } from '@capacitor/device';
 
 @Component({
@@ -10,7 +10,6 @@ import { Device } from '@capacitor/device';
   standalone: true,
   imports: [
     CommonModule,
-    IonicModule,
     IonContent,
     IonItem,
     IonLabel,
