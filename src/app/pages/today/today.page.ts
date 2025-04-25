@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-today',
   templateUrl: './today.page.html',
   styleUrls: ['./today.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton]
 })
 
 export class TodayPage implements OnInit {
@@ -18,6 +18,10 @@ export class TodayPage implements OnInit {
   currentDate: string = new Date().toLocaleString(); // shows current date/time
 
   ngOnInit() {
+  }
+
+  saveMood() {
+    console.log("Save Mood clicked!");
   }
 
 }
