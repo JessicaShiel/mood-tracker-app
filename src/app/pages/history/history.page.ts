@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButton, IonLabel, IonItem, IonIcon, IonToggle } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButton, IonLabel, IonItem, IonIcon, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { ChartType, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { StorageService } from 'src/app/services/storage.service';
+
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSegment, IonSegmentButton, IonLabel, BaseChartDirective, IonItem, IonIcon, IonToggle ]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSegment, IonSegmentButton, IonLabel, BaseChartDirective, IonItem, IonIcon, IonToggle,   IonCard, IonCardHeader, IonCardTitle, IonCardContent ]
 })
 export class HistoryPage implements OnInit {
 
@@ -22,6 +23,11 @@ export class HistoryPage implements OnInit {
 
   chartData: any;
   chartLabels: string[] = [];
+
+  async ionViewWillEnter() {
+    await this.loadMoods();
+    this.updateChart();
+  }
 
   constructor(private storageService: StorageService) {}
 

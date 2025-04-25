@@ -28,8 +28,8 @@ export class TodayPage implements OnInit {
         note: this.note
       };
 
-    const dateKey = new Date().toLocaleDateString();
-  
+      const dateKey = new Date().toISOString().split('T')[0]; // format: YYYY-MM-DD
+
     await this.storageService.saveMood(dateKey, moodData);
 
     const alert = await this.alertCtrl.create({
