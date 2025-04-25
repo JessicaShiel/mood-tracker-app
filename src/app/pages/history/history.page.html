@@ -1,5 +1,4 @@
-
-<ion-content class="ion-padding">
+<ion-content class="ion-padding custom-background">
   <ion-segment [(ngModel)]="timeFilter" (ionChange)="onFilterChange(timeFilter)">
     <ion-segment-button value="week">
       <ion-label>Last 7 Days</ion-label>
@@ -21,8 +20,8 @@
       [checked]="colorMode === 'mood'">
     </ion-toggle>
   </ion-item>
-  
-  <ion-button expand="block" (click)="loadMoods()">Load Moods</ion-button>
+
+  <ion-button expand="block" (click)="loadMoods()" class="pink-button">Load Moods</ion-button>
 
   <ion-segment [(ngModel)]="chartType" (ionChange)="onChartTypeChange(chartType)">
     <ion-segment-button value="bar">
@@ -33,17 +32,16 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-card class="chart-card">
-  <ion-card-header>
-  <ion-card-title>Mood History</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-  <canvas baseChart
-  [data]="chartData"
-  [type]="chartType"
-  [options]="chartOptions">
-</canvas>
-</ion-card-content>
-</ion-card>
-
+  <ion-card class="chart-card girly-card">
+    <ion-card-header>
+      <ion-card-title>Mood History</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas baseChart
+        [data]="chartData"
+        [type]="chartType"
+        [options]="chartOptions">
+      </canvas>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

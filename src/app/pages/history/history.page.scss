@@ -1,17 +1,79 @@
+.custom-background {
+  --background: #fff9db; // pastel yellow background
+}
+
+ion-segment {
+  margin-top: 16px;
+  --background: #ffe4ec; // light pink
+  --indicator-color: #d291bc; // pastel purple
+}
+
+ion-segment-button {
+  color: #800080;
+  --color-checked: #fff;
+  --background-checked: #eac4f8; // soft lilac
+}
+
 ion-item {
-    align-items: center;
-    ion-label p {
-      font-size: 0.8em;
-      color: var(--ion-color-medium);
-      margin: 0;
-    }
+  margin-top: 16px;
+  --background: transparent;
+
+  ion-label {
+    color: #5e004d; // dark plum
+    font-weight: 500;
   }
-  
-  .chart-card {
-    margin: 16px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    canvas {
-      max-height: 300px;
-    }
+
+  ion-label p {
+    font-size: 0.75em;
+    color: #9b4d8c;
   }
+
+  ion-icon {
+    color: #ff69b4;
+  }
+
+  ion-toggle {
+    --handle-background: #ffb6c1; // light pink
+    --background: #f8c8dc;
+    --background-checked: #eac4f8; // lilac
+  }
+}
+
+.pink-button {
+  --background: #ffc0cb;
+  --background-activated: #ff99bb;
+  --color: #fff;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-top: 12px;
+}
+
+.chart-card {
+  margin: 20px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(234, 179, 255, 0.3);
+  background-color: #fff0f5; // lavender blush
+
+  ion-card-header {
+    background-color: #ffe4ec;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0cce2;
+  }
+
+  ion-card-title {
+    color: #c71585; // medium violet red
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  ion-card-content {
+    padding: 16px;
+    background-color: #fff8f8;
+  }
+
+  canvas {
+    max-height: 300px;
+  }
+}
