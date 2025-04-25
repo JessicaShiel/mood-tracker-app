@@ -13,7 +13,7 @@
     <ion-icon slot="start" name="color-palette-outline"></ion-icon>
     <ion-label>
       Mood-based Colors
-      <p>Toggle between blue or mood-specific colors</p>
+      <p>Toggle between Pink or mood-specific colors</p>
     </ion-label>
     <ion-toggle
       [(ngModel)]="colorMode"
@@ -39,7 +39,6 @@
   <ion-card-content>
   <canvas baseChart
   [data]="chartData"
-  [labels]="chartLabels"
   [type]="chartType"
   [options]="chartOptions">
 </canvas>

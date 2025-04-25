@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButton, IonLabel, IonItem, IonIcon, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType, ChartOptions, ChartConfiguration  } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -16,13 +16,19 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class HistoryPage implements OnInit {
 
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+
   moods: any[] = [];
   colorMode: 'static' | 'mood' = 'static'; // toggle state
   chartType: ChartType = 'bar';
   timeFilter: 'week' | 'month' = 'month';
 
-  chartData: any;
   chartLabels: string[] = [];
+
+  chartData: ChartConfiguration['data'] = {
+    labels: [],
+    datasets: []
+  };
 
   async ionViewWillEnter() {
     await this.loadMoods();
@@ -51,21 +57,29 @@ export class HistoryPage implements OnInit {
 
   updateChart() {
     this.chartLabels = this.moods.map(m => m.date);
-
+  
     let backgroundColors: string[] = [];
-
+  
     if (this.colorMode === 'mood') {
       backgroundColors = this.moods.map(m => this.getMoodColor(m.mood));
     } else {
-      backgroundColors = this.moods.map(() => '#3880ff'); // Static blue
+      backgroundColors = this.moods.map(() => '#3880ff');
     }
-
-    this.chartData = [{
-      data: this.moods.map(m => m.mood),
-      label: 'Mood Level',
-      backgroundColor: backgroundColors
-    }];
+  
+    this.chartData = {
+      labels: this.chartLabels,
+      datasets: [{
+        data: this.moods.map(m => m.mood),
+        label: 'Mood Level',
+        backgroundColor: backgroundColors
+      }]
+    };
+  
+    // ✅ Trigger chart update if view is ready
+    this.chart?.update();
   }
+
+  
 
   getMoodColor(mood: number): string {
     if (mood >= 4) return '#FFD700'; // Happy = Yellow
