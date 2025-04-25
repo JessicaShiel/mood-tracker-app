@@ -1,17 +1,17 @@
 .custom-background {
-  --background: #fff9db; // pastel yellow background
+  --background: #fff9db; 
 }
 
 ion-segment {
   margin-top: 16px;
-  --background: #ffe4ec; // light pink
-  --indicator-color: #d291bc; // pastel purple
+  --background: #ffe4ec; 
+  --indicator-color: #d291bc; 
 }
 
 ion-segment-button {
   color: #800080;
   --color-checked: #fff;
-  --background-checked: #eac4f8; // soft lilac
+  --background-checked: #eac4f8; 
 }
 
 ion-item {
@@ -19,7 +19,7 @@ ion-item {
   --background: transparent;
 
   ion-label {
-    color: #5e004d; // dark plum
+    color: #5e004d; 
     font-weight: 500;
   }
 
@@ -33,9 +33,9 @@ ion-item {
   }
 
   ion-toggle {
-    --handle-background: #ffb6c1; // light pink
+    --handle-background: #ffb6c1; 
     --background: #f8c8dc;
-    --background-checked: #eac4f8; // lilac
+    --background-checked: #eac4f8; 
   }
 }
 
@@ -54,7 +54,7 @@ ion-item {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 16px rgba(234, 179, 255, 0.3);
-  background-color: #fff0f5; // lavender blush
+  background-color: #fff0f5; 
 
   ion-card-header {
     background-color: #ffe4ec;
@@ -63,7 +63,7 @@ ion-item {
   }
 
   ion-card-title {
-    color: #c71585; // medium violet red
+    color: #c71585; 
     font-size: 1.3rem;
     font-weight: bold;
   }
@@ -71,6 +71,21 @@ ion-item {
   ion-card-content {
     padding: 16px;
     background-color: #fff8f8;
+  }
+
+  .chart-card canvas {
+    border: 1px solid #e1bee7; 
+  }
+  
+  .chartOptions {
+    --lineColor: #f08080; 
+    --barColor: #f1a7f1;  
+  }
+  
+  
+  .chartOptions .chart-line, .chartOptions .chart-bar {
+    border-color: #e1bee7;
+    fill: #f3c6eb;  
   }
 
   canvas {
