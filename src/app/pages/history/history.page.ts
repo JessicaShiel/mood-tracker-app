@@ -40,8 +40,9 @@ export class HistoryPage implements OnInit {
     const allMoods = await this.storageService.getAllMoods();
 
     // Sort and filter data
+    const filtered = allMoods.filter(entry => /^\d{4}-\d{2}-\d{2}$/.test(entry.date));
     const now = new Date();
-    this.moods = allMoods.filter(entry => {
+    this.moods = filtered.filter(entry => {
       const entryDate = new Date(entry.date);
       const daysAgo = (now.getTime() - entryDate.getTime()) / (1000 * 60 * 60 * 24);
       return this.timeFilter === 'week' ? daysAgo <= 7 : daysAgo <= 30;

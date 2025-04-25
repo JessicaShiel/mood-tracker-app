@@ -38,4 +38,9 @@ export class StorageService {
   async getMood(date: string) {
     return await this._storage?.get(date);
   }
+
+    // Delete a specific mood by its date key
+    async deleteMood(date: string) {
+      await this._storage?.remove(date);
+    }
 }

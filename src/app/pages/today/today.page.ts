@@ -28,16 +28,11 @@ export class TodayPage implements OnInit {
         note: this.note
       };
 
+      const today = new Date();
       const dateKey = new Date().toISOString().split('T')[0]; // format: YYYY-MM-DD
 
     await this.storageService.saveMood(dateKey, moodData);
-
-
-    ///testing over here
-    console.log('Saved mood:', dateKey, moodData);
-
-const allMoods = await this.storageService.getAllMoods();
-console.log('All moods after save:', allMoods);
+    await this.storageService.deleteMood('25/04/2025');
 
     const alert = await this.alertCtrl.create({
       header: 'Mood Saved',
@@ -49,6 +44,5 @@ console.log('All moods after save:', allMoods);
   
     this.note = '';
     this.moodValue = 3;
-  
   }
 }
