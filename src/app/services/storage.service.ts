@@ -8,39 +8,48 @@ export class StorageService {
   private _storage: Storage | null = null;
 
   constructor(private storage: Storage) {
-    this.init();
+    this.initPromise = this.init();
   }
-
-  async init() {
+  
+  private initPromise: Promise<void>;
+  
+  private async init() {
     const storage = await this.storage.create();
     this._storage = storage;
   }
 
-  // Save a mood with today's date as key
-  async saveMood(date: string, data: { mood: number, note: string }) {
-    await this._storage?.set(date, data);
+  private async ready() {
+    if (this.initPromise) await this.initPromise;
   }
 
-  // Get all saved moods
-  async getAllMoods() {
-    const keys = await this._storage?.keys();
-    const moods: any[] = [];
+  // Save a mood with today's date as key
+async saveMood(date: string, data: { mood: number, note: string }) {
+  await this.ready();
+  await this._storage?.set(date, data);
+}
 
-    for (const key of keys || []) {
-      const entry = await this._storage?.get(key);
-      if (entry) moods.push({ date: key, ...entry });
-    }
+async getAllMoods() {
+  await this.ready();
+  const keys = await this._storage?.keys();
+  const moods: any[] = [];
+
+  for (const key of keys || []) {
+    const entry = await this._storage?.get(key);
+    if (entry) moods.push({ date: key, ...entry });
+  }
 
     return moods;
   }
 
   // Get mood for a specific day
   async getMood(date: string) {
+    await this.ready();
     return await this._storage?.get(date);
   }
 
     // Delete a specific mood by its date key
     async deleteMood(date: string) {
+      await this.ready();
       await this._storage?.remove(date);
     }
 }

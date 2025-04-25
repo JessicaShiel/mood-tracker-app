@@ -31,8 +31,8 @@ export class TodayPage implements OnInit {
       const today = new Date();
       const dateKey = new Date().toISOString().split('T')[0]; // format: YYYY-MM-DD
 
+    console.log('Saving mood:', dateKey, moodData);
     await this.storageService.saveMood(dateKey, moodData);
-    await this.storageService.deleteMood('25/04/2025');
 
     const alert = await this.alertCtrl.create({
       header: 'Mood Saved',

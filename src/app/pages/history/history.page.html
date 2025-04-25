@@ -22,6 +22,7 @@
     </ion-toggle>
   </ion-item>
   
+  <ion-button expand="block" (click)="loadMoods()">Load Moods</ion-button>
 
   <ion-segment [(ngModel)]="chartType" (ionChange)="onChartTypeChange(chartType)">
     <ion-segment-button value="bar">

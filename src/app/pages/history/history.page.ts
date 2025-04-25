@@ -44,6 +44,8 @@ export class HistoryPage implements OnInit {
 
   async loadMoods() {
     const allMoods = await this.storageService.getAllMoods();
+    console.log('All moods from storage:', allMoods);
+
 
     // Sort and filter data
     const filtered = allMoods.filter(entry => /^\d{4}-\d{2}-\d{2}$/.test(entry.date));
@@ -75,7 +77,7 @@ export class HistoryPage implements OnInit {
       }]
     };
   
-    // ✅ Trigger chart update if view is ready
+    console.log('Filtered moods for chart:', this.moods);
     this.chart?.update();
   }
 
