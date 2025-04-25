@@ -31,11 +31,18 @@
     </ion-segment-button>
   </ion-segment>
 
+  <ion-card class="chart-card">
+  <ion-card-header>
+  <ion-card-title>Mood History</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
   <canvas baseChart
   [data]="chartData"
   [labels]="chartLabels"
   [type]="chartType"
   [options]="chartOptions">
 </canvas>
+</ion-card-content>
+</ion-card>
 
 </ion-content>

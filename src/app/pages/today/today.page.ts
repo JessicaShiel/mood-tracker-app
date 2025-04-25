@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonIcon, IonRange, IonTextarea } from '@ionic/angular/standalone';
 import { StorageService } from 'src/app/services/storage.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-today',
@@ -20,16 +21,27 @@ export class TodayPage implements OnInit {
 
   ngOnInit() {}
 
-  constructor(private storageService: StorageService) {}
-  saveMood() {
-    const moodData = {
-      mood: this.moodValue,
-      note: this.note
-    };
+  constructor(private storageService: StorageService,  private alertCtrl: AlertController) {}
+    async saveMood() {
+      const moodData = {
+        mood: this.moodValue,
+        note: this.note
+      };
+
     const dateKey = new Date().toLocaleDateString();
   
-    this.storageService.saveMood(dateKey, moodData).then(() => {
-      console.log('Mood saved!');
+    await this.storageService.saveMood(dateKey, moodData);
+
+    const alert = await this.alertCtrl.create({
+      header: 'Mood Saved',
+      message: 'Your mood has been successfully saved!',
+      buttons: ['OK']
     });
+  
+    await alert.present();
+  
+    this.note = '';
+    this.moodValue = 3;
+  
   }
 }

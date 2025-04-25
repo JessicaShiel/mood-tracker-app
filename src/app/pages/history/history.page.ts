@@ -94,7 +94,11 @@ export class HistoryPage implements OnInit {
     plugins: {
       tooltip: {
         callbacks: {
-          label: (context: any) => this.getTooltip(context.dataIndex)
+          label: (context) => {
+            const mood = this.moods[context.dataIndex];
+            const emoji = mood.mood >= 4 ? '😊' : mood.mood === 3 ? '😐' : '😢';
+            return `${emoji} Mood: ${mood.mood} - ${mood.note || 'No note'}`;
+          }
         }
       }
     }
