@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">settings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Appearance</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Dark Mode</ion-label>
+        <ion-toggle [checked]="isDarkMode" (ionChange)="toggleDarkMode($event)"></ion-toggle>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Device Info</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Model:</strong> {{ deviceInfo.model || 'N/A' }}</p>
+      <p><strong>Platform:</strong> {{ deviceInfo.platform || 'N/A' }}</p>
+      <p><strong>OS Version:</strong> {{ deviceInfo.osVersion || 'N/A' }}</p>
+      <p><strong>Manufacturer:</strong> {{ deviceInfo.manufacturer || 'N/A' }}</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
+
