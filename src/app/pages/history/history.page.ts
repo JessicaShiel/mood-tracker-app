@@ -5,14 +5,32 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButt
 import { ChartType, ChartOptions, ChartConfiguration  } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { StorageService } from 'src/app/services/storage.service';
-import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSegment, IonSegmentButton, IonLabel, BaseChartDirective, IonItem, IonIcon, IonToggle,   IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonicModule, IonButton  ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    BaseChartDirective,
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonSegment,
+    IonSegmentButton,
+    IonLabel,
+    IonItem,
+    IonIcon,
+    IonToggle,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonButton
+  ]  
 })
 export class HistoryPage implements OnInit {
 
