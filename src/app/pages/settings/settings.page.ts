@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList } from '@ionic/angular/standalone';
-import { Device, Haptics, ImpactStyle, App } from '@capacitor/device';
+import { Device} from '@capacitor/device';
+import { Haptics, ImpactStyle, } from '@capacitor/haptics';
+import { App } from '@capacitor/app';
+
 
 @Component({
   selector: 'app-settings',
