@@ -1,13 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>history</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <ion-segment [(ngModel)]="timeFilter" (ionChange)="onFilterChange(timeFilter)">
+    <ion-segment-button value="week">
+      <ion-label>Last 7 Days</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="month">
+      <ion-label>Last 30 Days</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">history</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item lines="none">
+    <ion-icon slot="start" name="color-palette-outline"></ion-icon>
+    <ion-label>
+      Mood-based Colors
+      <p>Toggle between blue or mood-specific colors</p>
+    </ion-label>
+    <ion-toggle
+      [(ngModel)]="colorMode"
+      (ionChange)="onColorToggle()"
+      [checked]="colorMode === 'mood'">
+    </ion-toggle>
+  </ion-item>
+  
+
+  <ion-segment [(ngModel)]="chartType" (ionChange)="onChartTypeChange(chartType)">
+    <ion-segment-button value="bar">
+      <ion-label>Bar</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="line">
+      <ion-label>Line</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <canvas baseChart
+    [data]="chartData"
+    [labels]="chartLabels"
+    [type]="chartType"
+    [options]="{ responsive: true, plugins: { tooltip: { callbacks: { label: (context) => getTooltip(context.dataIndex) } } } }">
+  </canvas>
 </ion-content>
