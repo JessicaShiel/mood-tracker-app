@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonIcon, IonRange, IonTextarea } from '@ionic/angular/standalone';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-today',
@@ -20,8 +21,15 @@ export class TodayPage implements OnInit {
   ngOnInit() {
   }
 
+  constructor(private storageService: StorageService) {}
   saveMood() {
-    console.log("Save Mood clicked!");
+    const moodData = {
+      mood: this.moodValue,
+      note: this.note
+    };
+    const dateKey = new Date().toLocaleDateString();
+  
+    this.storageService.saveMood(dateKey, moodData).then(() => {
+      console.log('Mood saved!');
+    });
   }
-
-}
