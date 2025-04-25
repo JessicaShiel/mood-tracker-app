@@ -45,3 +45,16 @@ ion-content.custom-background {
   margin-top: 20px;
   box-shadow: 0 4px 12px rgba(255, 182, 193, 0.5);
 }
+
+ion-range::part(track-active) {
+  background: #d9b3ff; // light purple
+}
+
+ion-range::part(knob) {
+  background: #c68cff; // a slightly darker purple for contrast
+}
+
+ion-range::part(pin) {
+  background: #d9b3ff;
+  color: #fff;
+}
