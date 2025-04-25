@@ -122,8 +122,9 @@ export class HistoryPage implements OnInit {
     this.updateChart();
   }
 
-  async onChartTypeChange(type: ChartType) {
-    this.chartType = type;
+  async onChartTypeChange(type: 'bar' | 'line') {
+
+
     this.updateChart();
   }
 
@@ -182,9 +183,6 @@ export class HistoryPage implements OnInit {
       }
     }
   };
-  
-  
-  
-  
+
   
 }
