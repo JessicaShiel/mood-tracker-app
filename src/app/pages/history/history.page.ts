@@ -44,9 +44,8 @@ export class HistoryPage implements OnInit {
 
   moods: any[] = [];
   colorMode: 'static' | 'mood' = 'static'; // toggle state
-  chartType: ChartType = 'bar';
+  chartType: 'bar' | 'line' = 'bar'; 
   timeFilter: 'week' | 'month' = 'month';
-
   chartLabels: string[] = [];
 
   chartData: ChartConfiguration<'bar' | 'line'>['data'] = {
