@@ -49,7 +49,7 @@ export class HistoryPage implements OnInit {
 
   chartLabels: string[] = [];
 
-  chartData: ChartConfiguration['data'] = {
+  chartData: ChartConfiguration<'bar' | 'line'>['data'] = {
     labels: [],
     datasets: []
   };
