@@ -86,7 +86,7 @@ export class HistoryPage implements OnInit {
     if (this.colorMode === 'mood') {
       backgroundColors = this.moods.map(m => this.getMoodColor(m.mood));
     } else {
-      backgroundColors = this.moods.map(() => '#3880ff');
+      backgroundColors = this.moods.map(() => '#ffb6c1');
     }
   
     this.chartData = {
@@ -109,8 +109,8 @@ export class HistoryPage implements OnInit {
   
 
   getMoodColor(mood: number): string {
-    if (mood >= 4) return '#FFD700'; // Happy = Yellow
-    if (mood === 3) return '#FFA500'; // Neutral = Orange
+    if (mood >= 4) return '#fff0f5'; // Happy = Lavender Blush
+    if (mood === 3) return '#add8e6'; // Neutral = Light Blue
     return '#1E90FF'; // Sad = Blue
   }
   
