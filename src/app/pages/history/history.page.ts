@@ -1,3 +1,4 @@
+import { Chart, BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,6 +6,10 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonSegment, IonSegmentButt
 import { ChartType, ChartOptions, ChartConfiguration  } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { StorageService } from 'src/app/services/storage.service';
+
+
+Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+
 
 @Component({
   selector: 'app-history',
@@ -76,6 +81,7 @@ export class HistoryPage implements OnInit {
   }
 
   updateChart() {
+    if (!this.moods.length) return;
     this.chartLabels = this.moods.map(m => m.date);
   
     let backgroundColors: string[] = [];
@@ -85,6 +91,11 @@ export class HistoryPage implements OnInit {
     } else {
       backgroundColors = this.moods.map(() => '#3880ff');
     }
+
+      // Destroy previous chart instance (if any)
+  if (this.chart?.chart) {
+    this.chart.chart.destroy();
+  }
   
     this.chartData = {
       labels: this.chartLabels,
@@ -95,10 +106,14 @@ export class HistoryPage implements OnInit {
       }]
     };
   
-    console.log('Filtered moods for chart:', this.moods);
-    this.chart?.update();
-  }
 
+  // Render updated chart
+  setTimeout(() => {
+    this.chart?.update();
+  });
+
+  console.log('Filtered moods for chart:', this.moods);
+}
   
 
   getMoodColor(mood: number): string {
@@ -132,11 +147,16 @@ export class HistoryPage implements OnInit {
 
   chartOptions: ChartOptions = {
     responsive: true,
+    animation: {
+      duration: 500,
+      easing: 'easeOutQuart'
+    },
     plugins: {
       tooltip: {
         callbacks: {
           label: (context) => {
             const mood = this.moods[context.dataIndex];
+            if (!mood) return 'No data';
             const emoji = mood.mood >= 4 ? '😊' : mood.mood === 3 ? '😐' : '😢';
             return `${emoji} Mood: ${mood.mood} - ${mood.note || 'No note'}`;
           }
@@ -144,5 +164,6 @@ export class HistoryPage implements OnInit {
       }
     }
   };
+  
   
 }
