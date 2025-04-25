@@ -4,6 +4,7 @@ import {IonContent, IonItem, IonLabel, IonToggle, IonCard, IonCardHeader, IonCar
 import { Device} from '@capacitor/device';
 import { Haptics, ImpactStyle, } from '@capacitor/haptics';
 import { App } from '@capacitor/app';
+import { IonButton } from '@ionic/angular/standalone';} from '@ionic/angular/standalone';
 
 
 @Component({
@@ -21,7 +22,8 @@ import { App } from '@capacitor/app';
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonList
+    IonList,
+    IonButton
   ]
 })
 
